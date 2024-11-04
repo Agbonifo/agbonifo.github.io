@@ -25,7 +25,7 @@ const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
 
 const corsOptions = {
-  origin: ["https://agbonifo.github.io", "https://portfolio-phi-murex-73.vercel.app", "https://agbonifo.github.io/portfolio"], // Allow requests from your GitHub Pages
+  origin: ["https://agbonifo.github.io", "https://portfolio-phi-murex-73.vercel.app"], // Allow requests from your GitHub Pages
   methods: ["GET", "POST"],
   credentials: true
   // allowedHeaders: ["Content-Type", "X-CSRF-Token"],

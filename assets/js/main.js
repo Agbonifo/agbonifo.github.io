@@ -246,24 +246,12 @@
     });
   });
 
-  //  CSRF Token Handling
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   fetch("/csrf-token", {
-  //     method: "GET",
-  //     credentials: "same-origin",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       document.getElementById("_csrf").value = data.csrfToken;
-  //     })
-  //     .catch((err) => console.error("Failed to fetch CSRF token:", err));
-  // });
 
   document.addEventListener("DOMContentLoaded", () => {
     // fetch("https://portfolio-phi-murex-73.vercel.app/csrf-token", {
-      fetch("https://portfolio-phi-murex-73.vercel.app/csrf-token", {
+      fetch("/csrf-token", {
       method: "GET",
-      credentials: "include", // Allows cookies to be sent with the request
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -274,14 +262,6 @@
   });
   
 
-
-  // form action url
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const form = document.getElementById("contactForm");
-  //   if (window.location.hostname === "https://agbonifo.github.io/portfolio/") {
-  //     form.action = "https://portfolio-phi-murex-73.vercel.app/";
-  //   }
-  // });
   
 
   // Read More/Read Less Functionality
