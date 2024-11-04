@@ -178,7 +178,6 @@
         enter: function (t) {
           $this.removeClass("inactive");
         },
-
       });
     };
 
@@ -226,7 +225,7 @@
     });
   };
 
-//  Automatic Capitalization
+  //  Automatic Capitalization
   document.addEventListener("DOMContentLoaded", function () {
     const inputs = document.querySelectorAll(".auto-cap");
 
@@ -246,9 +245,8 @@
     });
   });
 
-
   document.addEventListener("DOMContentLoaded", () => {
-      fetch("https://agbonifo-github-io.vercel.app/csrf-token", {
+    fetch("https://agbonifo-github-io.vercel.app/csrf-token", {
       method: "GET",
       credentials: "include",
     })
@@ -259,9 +257,6 @@
       })
       .catch((err) => console.error("Failed to fetch CSRF token:", err));
   });
-  
-
-  
 
   // Read More/Read Less Functionality
   document.addEventListener("DOMContentLoaded", function () {
