@@ -25,7 +25,7 @@ const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
 
 const corsOptions = {
-  origin: ["https://agbonifo.github.io", "https://portfolio-phi-murex-73.vercel.app"], // Allow requests from your GitHub Pages
+  origin: ["https://agbonifo.github.io", "https://agbonifo-github-io.vercel.app"],
   methods: ["GET", "POST"],
   credentials: true
   // allowedHeaders: ["Content-Type", "X-CSRF-Token"],
@@ -40,7 +40,6 @@ app.use("/assets", express.static(join(__dirname, "assets")));
 app.use(cookieParser());
 
 const csrfProtection = csrf({
-  // cookie: { httpOnly: true, secure: true, sameSite: "lax" },
   cookie: { httpOnly: true, secure: true, sameSite: "none" },
 });
 app.use(csrfProtection);
@@ -97,17 +96,17 @@ const contactFormSchema = new mongoose.Schema(
 const Contact = mongoose.model("contact", contactFormSchema);
 
 app.get("/csrf-token", (req, res) => {
-  console.log("Generated CSRF Token:", req.csrfToken());
+  // console.log("Generated CSRF Token:", req.csrfToken());
   res.json({ csrfToken: req.csrfToken() });
 });
 
 app.get("/", (req, res) => {
-  console.log("Get Request Header:", req.headers.origin)
+  // console.log("Get Request Header:", req.headers.origin)
   const csrfToken = req.csrfToken();
 
   fs.readFile(join(__dirname, "index.html"), "utf8", (err, data) => {
     if (err) {
-      console.error("Error reading index.html:", err);
+      // console.error("Error reading index.html:", err);
       return res.status(500).send("Internal Server Error");
     }
 
@@ -121,7 +120,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log("Post Request Header:", req.headers.origin)
+  // console.log("Post Request Header:", req.headers.origin)
   try {
     const { name, email, subject, message } = req.body;
 
@@ -144,21 +143,21 @@ app.post("/", async (req, res) => {
 
     const contactReceived = await contact.save();
     if (contactReceived) {
-      console.log("New contact message saved:", contactReceived);
+      // console.log("New contact message saved:", contactReceived);
       res.clearCookie("_csrf");
       return res.sendFile(join(__dirname, "success.html"));
     } else {
-      console.log("No contact saved");
+      // console.log("No contact saved");
       return res.sendFile(join(__dirname, "failure.html"));
     }
   } catch (err) {
-    console.error("Error saving contact:", err);
+    // console.error("Error saving contact:", err);
     return res.sendFile(join(__dirname, "failure.html"));
   }
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  // console.error(err.stack);
   res.status(500).send("Something went wrong. Please try again later.");
 });
 

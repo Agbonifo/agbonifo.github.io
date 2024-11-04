@@ -248,8 +248,7 @@
 
 
   document.addEventListener("DOMContentLoaded", () => {
-    // fetch("https://portfolio-phi-murex-73.vercel.app/csrf-token", {
-      fetch("/csrf-token", {
+      fetch("https://agbonifo-github-io.vercel.app/csrf-token", {
       method: "GET",
       credentials: "include",
     })
