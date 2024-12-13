@@ -29,7 +29,7 @@ ol, ul {
 blockquote, q {
   margin-bottom: 6em;
   quotes: none;
-}
+  }
 
 blockquote:before, blockquote:after, q:before, q:after {
   content: "";
@@ -2026,6 +2026,12 @@ body > article {
 
 #typed-text {
   color: #11999b;
+}
+
+.blockquote {
+  background-color: #FFE31A;
+  border-radius: 30px;
+  color: #333;
 }
 
 #top {
