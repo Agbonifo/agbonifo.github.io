@@ -1844,6 +1844,16 @@ ul.actions li:first-child {
   width: auto;
 }
 
+.box.style2 p a {
+text-decoration: none;
+color: #11999b;
+}
+
+.box.style2 p a:hover {
+  text-decoration: underline;
+  color: #35a9a9;
+  }
+
 /* Icons */
 
 .icon {
@@ -2033,6 +2043,17 @@ body > article {
   border-radius: 30px;
   color: #333;
 }
+
+.blockquote a {
+  text-decoration: none; 
+  color: #11999B;
+  font-weight: bold;
+}
+
+.blockquote a:hover {
+  color: #35a9a9;
+  text-decoration: underline;
+  }
 
 #top {
   padding: 10em 0 10em 0;

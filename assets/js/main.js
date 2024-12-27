@@ -196,7 +196,7 @@
 
   //  Typed Text Animation
   new Typed("#typed-text", {
-    strings: ["Data analyst", "&", "Full-stack web developer"],
+    strings: ["Data Analyst", "&", "Full-Stack Web Developer"],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
@@ -258,36 +258,41 @@
       .catch((err) => console.error("Failed to fetch CSRF token:", err));
   });
 
-  // Read More/Read Less Functionality
-  document.addEventListener("DOMContentLoaded", function () {
-    const boxes = document.querySelectorAll(".box.style2");
-    boxes.forEach(function (box) {
-      const textElement = box.querySelector(".text");
-      const readMoreBtn = box.querySelector(".read-more-btn");
+// Read More/Read Less Functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const boxes = document.querySelectorAll(".box.style2");
 
-      if (!textElement || !readMoreBtn) return;
+  boxes.forEach(function (box) {
+    const textElement = box.querySelector(".text");
 
-      const fullText = textElement.innerText;
-      const shortText =
-        fullText.substring(0, 100) + (fullText.length > 100 ? "..." : "");
+    if (!textElement) return;
 
-      textElement.innerText = shortText;
+    const fullText = textElement.innerText.trim();
+    const shortText =
+      fullText.substring(0, 100) + (fullText.length > 100 ? "..." : "");
 
-      if (fullText.length > 100) {
-        readMoreBtn.addEventListener("click", function () {
-          if (textElement.innerText === shortText) {
-            textElement.innerText = fullText;
-            readMoreBtn.textContent = "Read less";
-          } else {
-            textElement.innerText = shortText;
-            readMoreBtn.textContent = "Read more";
-          }
-        });
-      } else {
-        readMoreBtn.style.display = "none";
-      }
-    });
+    textElement.innerHTML = shortText + 
+      (fullText.length > 100 ? ' <a href="#" class="read-more">Read more</a>' : "");
+
+    if (fullText.length > 100) {
+      const readMoreLink = textElement.querySelector(".read-more");
+
+      readMoreLink.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (textElement.innerHTML.startsWith(shortText)) {
+          textElement.innerHTML = fullText + ' <a href="#" class="read-more">Read less</a>';
+        } else {
+          textElement.innerHTML = shortText + ' <a href="#" class="read-more">Read more</a>';
+        }
+        const newReadMoreLink = textElement.querySelector(".read-more");
+        newReadMoreLink.addEventListener("click", arguments.callee);
+      });
+    }
   });
+});
+
+
 
   // Copyright Year Update
   document.getElementById("year").textContent = new Date().getFullYear();
