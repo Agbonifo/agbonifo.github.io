@@ -196,7 +196,7 @@
 
   //  Typed Text Animation
   new Typed("#typed-text", {
-    strings: ["Data Analyst", "&", "Full-Stack Web Developer"],
+    strings: ["Data Analyst", "Machine Learning Engineer",  "&", "Full-Stack Web Developer"],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
